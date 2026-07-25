@@ -6,7 +6,6 @@ import joblib
 
 app = FastAPI()
 
-# السماح لـ React بالاتصال بالـ API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
@@ -15,7 +14,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# تحميل الموديل
 model = joblib.load("model.pkl")
 
 

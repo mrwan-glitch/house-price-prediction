@@ -13,9 +13,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+from dotenv import load_dotenv
+import os
 
-model = joblib.load("model.pkl")
+load_dotenv()
 
+MODEL_PATH = os.getenv("MODEL_PATH", "model.pkl")
+
+model = joblib.load(MODEL_PATH)
 
 class HouseData(BaseModel):
     carpet_area_sqft: float
@@ -32,7 +37,9 @@ class HouseData(BaseModel):
 @app.get("/")
 def home():
     return {"message": "House Price Prediction API is Running"}
-
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 @app.post("/predict")
 def predict(data: HouseData):

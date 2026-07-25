@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+
+backend/model.pkl
+notebooks/data/
+
+frontend/node_modules/
+
+.vscode/
+
+.ipynb_checkpoints/
